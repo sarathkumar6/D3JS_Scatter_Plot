@@ -1,35 +1,27 @@
 let cyclistDataUrl = 'https://raw.githubusercontent.com/freeCodeCamp/ProjectReferenceData/master/cyclist-data.json';
 
-d3.json(cyclistDataUrl, function(dataset) {
+d3.json(cyclistDataUrl, function cyclistData(dataset) {
   dataset.forEach(function(dataPoint) {
     let timeParser = dataPoint.Time.split(':');
     dataPoint.Time = new Date(Date.UTC(1970, 0, 1, 0, timeParser[0], timeParser[1]));
   });
-  
-  const padding = {
-      top: 110,
-      bottom: 80,
-      left: 80,
-      right: 80
-  },
-      width = 800,
-      height = 600;
-  
-  let x = d3.scaleLinear()
-    .range([0, width - padding.left - padding.right]);
-  
-  var xAxis = d3.axisBottom(x).tickFormat(d3.format("d"))
     
-  x.domain([d3.min(dataset, (d) => d.Year) - 1, d3.max(dataset, (d) => d.Year) + 1]);
-
-  let y = d3.scaleTime()
-    .range([0, height - padding.top - padding.bottom]);
-  
-  var yAxis = d3.axisLeft(y).tickFormat(d3.timeFormat("%M:%S"));
-  
-  y.domain(d3.extent(dataset, (d) => d.Time));
-  
-
+    const padding = {
+        top: 110,
+        bottom: 80,
+        left: 80,
+        right: 80
+    },
+          width = 800,
+          height = 600;
+    
+    let x = d3.scaleLinear().range([0, width - padding.left - padding.right]),
+        y = d3.scaleTime().range([0, height - padding.top - padding.bottom]),
+        xAxis = d3.axisBottom(x).tickFormat(d3.format("d")),
+        yAxis = d3.axisLeft(y).tickFormat(d3.timeFormat("%M:%S"));
+    
+    x.domain([d3.min(dataset, (d) => d.Year) - 1, d3.max(dataset, (d) => d.Year) + 1]);
+    y.domain(d3.extent(dataset, (d) => d.Time));
   
   const svg = d3.select("#chart")
     .append("svg")
@@ -127,19 +119,18 @@ d3.json(cyclistDataUrl, function(dataset) {
   
   
   const tooltip = d3.select("body")
-      .append("div")
-      .attr("id", "tooltip");
-  
-  
-  circle.on("mouseover", function(d){ 
-        return tooltip.style("visibility", "visible")
+                    .append("div")
+                    .attr("id", "tooltip");
+    
+  circle.on("mouseover", (d) => { 
+      return tooltip
+          .style("visibility", "visible")
           .attr("data-year", d.Year)
-          .html(d.Name + ': ' + d.Nationality + '<br /> Year: ' + d.Year + 
-                ', Time: ' + d3.timeFormat("%M:%S")(d.Time) + 
-                (d.Doping === "" ? '' : '<br /><br />' + d.Doping));})
-      .on("mousemove", function(){
-        return tooltip.style("top", (d3.event.pageY-20)+"px")
-          .style("left", (d3.event.pageX+20)+"px");})
-      .on("mouseout", function(){
-        return tooltip.style("visibility", "hidden");});
+          .html(d.Name + ': ' + d.Nationality + '<br /> Year: ' + d.Year + ', Time: ' + d3.timeFormat("%M:%S")(d.Time) + (d.Doping === "" ? '' : '<br /><br />' + d.Doping));
+  })
+      .on("mousemove", () => {
+        return tooltip
+            .style("top", (d3.event.pageY-20)+"px")
+            .style("left", (d3.event.pageX+20)+"px");})
+      .on("mouseout", ()=> tooltip.style("visibility", "hidden"));
 });
