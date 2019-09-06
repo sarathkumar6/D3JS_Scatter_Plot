@@ -36,7 +36,8 @@ d3.json(cyclistDataUrl, function(dataset) {
     .attr("width", width)
     .attr("height", height);
   
-  svg.append("text")
+  // Title text
+    svg.append("text")
     .text("Doping in Professional Bicycle Racing")
     .attr("id", "title")
     .attr("x", "50%")
@@ -53,7 +54,8 @@ d3.json(cyclistDataUrl, function(dataset) {
     .attr("text-anchor", "middle")
     .style("font-size", 18);
   
-  svg.append("text")
+ // Axes text
+    svg.append("text")
     .text("Time in Minutes")
     .attr("x", "-50%")
     .attr("y", "5%")
@@ -67,35 +69,33 @@ d3.json(cyclistDataUrl, function(dataset) {
     .attr("transform", "rotate(0)")
     .style("font-size", 14);
   
-  const legend1 = svg.append("g")
+  const gLegend = svg.append("g")
     .attr("id", "legend");
   
-  legend1.append("text")
+  gLegend.append("text")
     .text("No doping allegations")
-    .attr("x", width - padding.right - 4)
-    .attr("y", (height - padding.top) / 2 + 12)
+    .attr("x", "80%")
+    .attr("y", "30%")
     .attr("text-anchor", "end")
     .style("font-size", 11);
     
-  legend1.append("rect")
-    .attr("x", width - padding.right)
-    .attr("y", (height - padding.top) / 2)
-    .attr("width", 18)
-    .attr("height", 18)
+   gLegend.append("circle")
+    .attr("cx", "75%")
+    .attr("cy", "30%")
+    .attr("r", 8)
     .style("fill", "rgb(255, 127, 14)");
   
-  legend1.append("text")
+  gLegend.append("text")
     .text("Riders with doping allegations")
-    .attr("x", width - padding.right - 4)
-    .attr("y", (height - padding.top) / 2 + 12 + 22)
+    .attr("x", "80%")
+    .attr("y", "35%")
     .attr("text-anchor", "end")
     .style("font-size", 11);
     
-  legend1.append("rect")
-    .attr("x", width - padding.right)
-    .attr("y", (height - padding.top) / 2 + 22)
-    .attr("width", 18)
-    .attr("height", 18)
+  gLegend.append("circle")
+    .attr("cx", "75%")
+    .attr("cy", "35%")
+    .attr("r", 8)
     .style("fill", "rgb(31, 119, 180)");
   
   
