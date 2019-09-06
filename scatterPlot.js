@@ -66,9 +66,9 @@ d3.json(cyclistDataUrl, function cyclistData(dataset) {
     .attr("id", "legend");
   
   gLegend.append("text")
-    .text("No doping allegations")
-    .attr("x", "90%")
-    .attr("y", "30.5%")
+    .text("- No doping allegations")
+    .attr("x", "90.5%")
+    .attr("y", "30.8%")
     .attr("text-anchor", "end")
     .style("font-size", 11);
     
@@ -79,15 +79,15 @@ d3.json(cyclistDataUrl, function cyclistData(dataset) {
     .style("fill", "green");
   
   gLegend.append("text")
-    .text("Riders with doping allegations")
-    .attr("x", "95%")
-    .attr("y", "35.5%")
+    .text("- Riders with doping allegations")
+    .attr("x", "95.5%")
+    .attr("y", "36%")
     .attr("text-anchor", "end")
     .style("font-size", 11);
     
   gLegend.append("circle")
     .attr("cx", "75%")
-    .attr("cy", "35%")
+    .attr("cy", "35.5%")
     .attr("r", 8)
     .style("fill", "red");
   
