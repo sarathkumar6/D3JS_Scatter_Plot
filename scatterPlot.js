@@ -68,14 +68,15 @@ d3.json(cyclistDataUrl, function(dataset) {
     .attr("x", "50%")
     .attr("transform", "rotate(0)")
     .style("font-size", 14);
-  
+    
+  // Legend definition
   const gLegend = svg.append("g")
     .attr("id", "legend");
   
   gLegend.append("text")
     .text("No doping allegations")
-    .attr("x", "80%")
-    .attr("y", "30%")
+    .attr("x", "90%")
+    .attr("y", "30.5%")
     .attr("text-anchor", "end")
     .style("font-size", 11);
     
@@ -87,8 +88,8 @@ d3.json(cyclistDataUrl, function(dataset) {
   
   gLegend.append("text")
     .text("Riders with doping allegations")
-    .attr("x", "80%")
-    .attr("y", "35%")
+    .attr("x", "95%")
+    .attr("y", "35.5%")
     .attr("text-anchor", "end")
     .style("font-size", 11);
     
@@ -109,7 +110,7 @@ d3.json(cyclistDataUrl, function(dataset) {
     .attr("cy", (d) => y(d.Time))
     .attr("data-xvalue", (d) => d.Year)
     .attr("data-yvalue", (d) => d.Time)
-    .style("fill", (d) => d.Doping == "" ? "rgb(255, 127, 14)" : "rgb(31, 119, 180)")
+    .style("fill", (d) => d.Doping === "" ? "rgb(255, 127, 14)" : "rgb(31, 119, 180)")
     .attr("transform", "translate(" + padding.left + ", " + padding.top + ")");
   
   svg.append("g")
