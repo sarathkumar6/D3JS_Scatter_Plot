@@ -84,7 +84,7 @@ d3.json(cyclistDataUrl, function(dataset) {
     .attr("cx", "75%")
     .attr("cy", "30%")
     .attr("r", 8)
-    .style("fill", "rgb(255, 127, 14)");
+    .style("fill", "green");
   
   gLegend.append("text")
     .text("Riders with doping allegations")
@@ -97,9 +97,9 @@ d3.json(cyclistDataUrl, function(dataset) {
     .attr("cx", "75%")
     .attr("cy", "35%")
     .attr("r", 8)
-    .style("fill", "rgb(31, 119, 180)");
+    .style("fill", "red");
   
-  
+  // To be refactored from here
   const circle = svg.selectAll("circle")
     .data(dataset)
     .enter()
@@ -110,7 +110,7 @@ d3.json(cyclistDataUrl, function(dataset) {
     .attr("cy", (d) => y(d.Time))
     .attr("data-xvalue", (d) => d.Year)
     .attr("data-yvalue", (d) => d.Time)
-    .style("fill", (d) => d.Doping === "" ? "rgb(255, 127, 14)" : "rgb(31, 119, 180)")
+    .style("fill", (d) => d.Doping === "" ? "green" : "red")
     .attr("transform", "translate(" + padding.left + ", " + padding.top + ")");
   
   svg.append("g")
@@ -135,8 +135,8 @@ d3.json(cyclistDataUrl, function(dataset) {
         return tooltip.style("visibility", "visible")
           .attr("data-year", d.Year)
           .html(d.Name + ': ' + d.Nationality + '<br /> Year: ' + d.Year + 
-                ', TIme: ' + d3.timeFormat("%M:%S")(d.Time) + 
-                (d.Doping == "" ? '' : '<br /><br />' + d.Doping));})
+                ', Time: ' + d3.timeFormat("%M:%S")(d.Time) + 
+                (d.Doping === "" ? '' : '<br /><br />' + d.Doping));})
       .on("mousemove", function(){
         return tooltip.style("top", (d3.event.pageY-20)+"px")
           .style("left", (d3.event.pageX+20)+"px");})
