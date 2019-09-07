@@ -1,5 +1,5 @@
 body {
-  background: #cccccc;
+  background: white;
   padding: 30px;
   font-family: Tahoma;
   text-align: center;
@@ -9,9 +9,9 @@ body {
   width: auto;
   height: auto;
   display: inline-block;
-  background: #ffffff;
-  box-shadow: 0 0 25px 5px #000000;
-  border-radius: 5px;
+  border: 5px solid #285238;
+  border-radius: 10px;
+  background: #74D3AE;
 }
 
 #tooltip {
