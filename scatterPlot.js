@@ -36,7 +36,8 @@ d3.json(cyclistDataUrl, function cyclistData(dataset) {
     .attr("y", "6%")
     .attr("alignment-baseline", "middle")
     .attr("text-anchor", "middle")
-    .style("font-size", 28);
+    .style("font-size", 32)
+    .style("font-family", "Times New Roman");
   
   svg.append("text")
     .text("35 Fastest times up Alpe d'Huez")
@@ -44,7 +45,8 @@ d3.json(cyclistDataUrl, function cyclistData(dataset) {
     .attr("y", "12%")
     .attr("alignment-baseline", "middle")
     .attr("text-anchor", "middle")
-    .style("font-size", 18);
+    .style("font-size", 22)
+    .style("font-family", "Times New Roman");
   
  // Axes text
     svg.append("text")
@@ -52,14 +54,16 @@ d3.json(cyclistDataUrl, function cyclistData(dataset) {
     .attr("x", "-50%")
     .attr("y", "5%")
     .attr("transform", "rotate(-90)")
-    .style("font-size", 14);
+    .style("font-size", 16)
+    .style("font-family", "Helvetica");
   
   svg.append("text")
     .text("Calendar Year")
     .attr("y", "94%")
     .attr("x", "50%")
     .attr("transform", "rotate(0)")
-    .style("font-size", 14);
+    .style("font-size", 16)
+    .style("font-family", "Helvetica");
     
   // Legend definition
   const gLegend = svg.append("g")
@@ -67,26 +71,26 @@ d3.json(cyclistDataUrl, function cyclistData(dataset) {
   
   gLegend.append("text")
     .text("- No doping allegations")
-    .attr("x", "90.5%")
+    .attr("x", "91.25%")
     .attr("y", "30.8%")
     .attr("text-anchor", "end")
-    .style("font-size", 11);
+    .style("font-size", 14);
     
    gLegend.append("circle")
-    .attr("cx", "75%")
+    .attr("cx", "71%")
     .attr("cy", "30%")
     .attr("r", 8)
     .style("fill", "green");
   
   gLegend.append("text")
     .text("- Riders with doping allegations")
-    .attr("x", "95.5%")
-    .attr("y", "36%")
+    .attr("x", "97.5%")
+    .attr("y", "36.25%")
     .attr("text-anchor", "end")
-    .style("font-size", 11);
+    .style("font-size", 14);
     
   gLegend.append("circle")
-    .attr("cx", "75%")
+    .attr("cx", "71%")
     .attr("cy", "35.5%")
     .attr("r", 8)
     .style("fill", "red");
